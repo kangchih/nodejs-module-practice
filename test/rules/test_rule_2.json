@@ -1,0 +1,27 @@
+{
+    "rule_2":{
+        "description":"If this HTTP method is GET and path is ​/sb/me​, please check if ​sbcookie Cookie​ exists in header. Throw an error if not existing.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET"]
+            },
+            {
+                "field": "path",
+                "operator": "equal",
+                "values": ["/sb/me"]
+            },
+            {
+                "field": "Cookie",
+                "operator": "not_exist",
+                "values": ["sbcookie"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    }
+}

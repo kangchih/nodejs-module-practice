@@ -1,0 +1,10 @@
+{
+    "url": "http://www.sb.com/sb/me?q=1",
+    "method": "DELETE",
+    "headers": {
+      "Cookie": "sbcookie=value; name2=value2; name3=value3",
+      "Content-Type": "application/json",
+      "X-SB-AGENT": "AGENT_2",
+      "Referer": "http://www.sb.com"
+    }
+  }

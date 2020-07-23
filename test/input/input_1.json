@@ -1,0 +1,9 @@
+{
+    "url": "http://www.sb.com/sb/resource?q=1",
+    "method": "GET",
+    "headers": {
+      "Cookie": "name=value; name2=value2; name3=value3",
+      "Content-Type": "application/json",
+      "X-SB-AGENT": "anything"
+    }
+  }

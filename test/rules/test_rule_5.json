@@ -1,0 +1,18 @@
+{
+    "rule_5":{
+        "description":"If this HTTP method is POST/PUT, please remove all the​ ​url query string​.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["POST", "PUT"]
+            }
+        ],
+        "actions": [
+            {
+                "field": "query",
+                "do": "remove"
+            }
+        ]
+    }
+}

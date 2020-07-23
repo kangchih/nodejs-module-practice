@@ -1,0 +1,24 @@
+{
+    "rule_4":{
+        "description":"If this HTTP method is GET and path is match​ /sb/api/*​, please add​ ​From​ in the header and the value is ​hello@sb.com​.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET"]
+            },
+            {
+                "field": "path",
+                "operator": "match",
+                "values": ["/sb/api/*"]
+            }
+        ],
+        "actions": [
+            {
+                "field": "From",
+                "do": "add",
+                "new_value": "hello@sb.com"
+            }
+        ]
+    }
+}

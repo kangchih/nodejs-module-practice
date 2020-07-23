@@ -1,0 +1,10 @@
+{
+    "url": "http://www.sb.com/sb/me?q=1",
+    "method": "GET",
+    "headers": {
+      "Cookie": "sbcookie=value; name2=value2; name3=value3",
+      "Content-Type": "application/json",
+      "X-SB-AGENT": "anything",
+      "Referer": "http://www.google.com"
+    }
+  }

@@ -1,0 +1,22 @@
+{
+    "rule_10":{
+        "description":"This library only handles the domain from​ ​www.sb.com​. Throw an error if it is invalid.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET","PUT","POST","DELETE"]
+            },
+            {
+                "field": "domain",
+                "operator": "not_equal",
+                "values": ["www.sb.com"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    }
+}

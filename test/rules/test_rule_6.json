@@ -1,0 +1,22 @@
+{
+    "rule_6":{
+        "description":"If this HTTP method is POST/PUT, please check if ​X-SB-AGENT​ exists in header. Throw an error if not existing.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["PUT","POST"]
+            },
+            {
+                "field": "X-SB-AGENT",
+                "operator": "not_exist",
+                "values": [""]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    }
+}

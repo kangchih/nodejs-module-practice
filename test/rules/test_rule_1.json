@@ -1,0 +1,25 @@
+{
+    "rule_1":{
+        "description":"If this HTTP method is GET and path is ​/sb/resource​, please modify path to /sb/static/assets",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET"]
+            },
+            {
+                "field": "path",
+                "operator": "equal",
+                "values": ["/sb/resource"]
+            }
+        ],
+        "actions": [
+            {
+                "field": "path",
+                "do": "update",
+                "old_value": "/sb/resource",
+                "new_value": "/sb/static/assets"
+            }
+        ]
+    }
+}

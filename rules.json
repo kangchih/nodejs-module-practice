@@ -1,0 +1,234 @@
+{
+    "rule_0":{
+        "description":"Check request method. Throw an error if it is invalid.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "not_equal",
+                "values": ["GET"]
+            },
+            {
+                "field": "method",
+                "operator": "not_equal",
+                "values": ["POST"]
+            },
+            {
+                "field": "method",
+                "operator": "not_equal",
+                "values": ["PUT"]
+            },
+            {
+                "field": "method",
+                "operator": "not_equal",
+                "values": ["DELETE"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    },
+    "rule_1":{
+        "description":"If this HTTP method is GET and path is ​/sb/resource​, please modify path to /sb/static/assets",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET"]
+            },
+            {
+                "field": "path",
+                "operator": "equal",
+                "values": ["/sb/resource"]
+            }
+        ],
+        "actions": [
+            {
+                "field": "path",
+                "do": "update",
+                "old_value": "/sb/resource",
+                "new_value": "/sb/static/assets"
+            }
+        ]
+    },
+    "rule_2":{
+        "description":"If this HTTP method is GET and path is ​/sb/me​, please check if ​sbcookie Cookie​ exists in header. Throw an error if not existing.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET"]
+            },
+            {
+                "field": "path",
+                "operator": "equal",
+                "values": ["/sb/me"]
+            },
+            {
+                "field": "Cookie",
+                "operator": "not_exist",
+                "values": ["sbcookie"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    },
+    "rule_3":{
+        "description":"If this HTTP method is GET, please check if ​referer header​ is belong to www.sb.com​. Throw an error if it is invalid.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET"]
+            },
+            {
+                "field": "Referer",
+                "operator": "not_equal",
+                "values": ["www.sb.com"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    },
+    "rule_4":{
+        "description":"If this HTTP method is GET and path is match​ /sb/api/*​, please add​ ​From​ in the header and the value is ​hello@sb.com​.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET"]
+            },
+            {
+                "field": "path",
+                "operator": "match",
+                "values": ["/sb/api/*"]
+            }
+        ],
+        "actions": [
+            {
+                "field": "From",
+                "do": "add",
+                "new_value": "hello@sb.com"
+            }
+        ]
+    },
+    "rule_5":{
+        "description":"If this HTTP method is POST/PUT, please remove all the​ ​url query string​.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["POST", "PUT"]
+            }
+        ],
+        "actions": [
+            {
+                "field": "query",
+                "do": "remove"
+            }
+        ]
+    },
+    "rule_6":{
+        "description":"If this HTTP method is POST/PUT, please check if ​X-SB-AGENT​ exists in header. Throw an error if not existing.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["PUT","POST"]
+            },
+            {
+                "field": "X-SB-AGENT",
+                "operator": "not_exist",
+                "values": [""]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    },
+    "rule_7":{
+        "description":"If this HTTP method is POST/PUT, please check if ​Content-Type​ exists in header and the value should be “application/json”. Throw error if it is invalid.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["PUT","POST"]
+            },
+            {
+                "field": "Content-Type",
+                "operator": "not_equal",
+                "values": ["application/json"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    },
+    "rule_8":{
+        "description":"If this HTTP method is DELETE, please check if ​X-SB-AGENT​ exists in header and the value should be “AGENT_1” only. Throw error if it is invalid.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["DELETE"]
+            },
+            {
+                "field": "X-SB-AGENT",
+                "operator": "not_equal",
+                "values": ["AGENT_1"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    },
+    "rule_9":{
+        "description":"This library should add ​X-SB-TIMESTAMP​ in the header for all HTTP requests, the value is current timestamp",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET","PUT","POST","DELETE"]
+            }
+        ],
+        "actions": [
+            {
+                "field": "X-SB-TIMESTAMP",
+                "do": "add"
+            }
+        ]
+    },
+    "rule_10":{
+        "description":"This library only handles the domain from​ ​www.sb.com​. Throw an error if it is invalid.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET","PUT","POST","DELETE"]
+            },
+            {
+                "field": "domain",
+                "operator": "not_equal",
+                "values": ["www.sb.com"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    }
+}

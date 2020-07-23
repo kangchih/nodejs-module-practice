@@ -1,0 +1,6 @@
+url: ​http://www.sb.com/some/resource?q=1 
+method: ​POST
+headers:
+  Cookie: a=a; b=b; c=c
+  Content-Type: application/json
+  X-SB-AGENT​: agent

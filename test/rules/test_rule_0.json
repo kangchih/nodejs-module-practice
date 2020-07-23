@@ -1,0 +1,32 @@
+{
+    "rule_0":{
+        "description":"Check request method. Throw an error if it is invalid.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "not_equal",
+                "values": ["GET"]
+            },
+            {
+                "field": "method",
+                "operator": "not_equal",
+                "values": ["POST"]
+            },
+            {
+                "field": "method",
+                "operator": "not_equal",
+                "values": ["PUT"]
+            },
+            {
+                "field": "method",
+                "operator": "not_equal",
+                "values": ["DELETE"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    }
+}

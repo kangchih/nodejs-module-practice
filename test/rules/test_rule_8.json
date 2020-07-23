@@ -1,0 +1,22 @@
+{
+    "rule_8":{
+        "description":"If this HTTP method is DELETE, please check if ​X-SB-AGENT​ exists in header and the value should be “AGENT_1” only. Throw error if it is invalid.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["DELETE"]
+            },
+            {
+                "field": "X-SB-AGENT",
+                "operator": "not_equal",
+                "values": ["AGENT_1"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    }
+}

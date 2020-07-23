@@ -1,0 +1,22 @@
+{
+    "rule_7":{
+        "description":"If this HTTP method is POST/PUT, please check if ​Content-Type​ exists in header and the value should be “application/json”. Throw error if it is invalid.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["PUT","POST"]
+            },
+            {
+                "field": "Content-Type",
+                "operator": "not_equal",
+                "values": ["application/json"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    }
+}

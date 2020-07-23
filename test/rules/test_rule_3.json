@@ -1,0 +1,22 @@
+{
+    "rule_3":{
+        "description":"If this HTTP method is GET, please check if ​referer header​ is belong to www.sb.com​. Throw an error if it is invalid.",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET"]
+            },
+            {
+                "field": "Referer",
+                "operator": "not_equal",
+                "values": ["www.sb.com"]
+            }
+        ],
+        "actions": [
+            {
+                "do": "error"
+            }
+        ]
+    }
+}

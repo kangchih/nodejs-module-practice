@@ -1,0 +1,18 @@
+{
+    "rule_9":{
+        "description":"This library should add ​X-SB-TIMESTAMP​ in the header for all HTTP requests, the value is current timestamp",
+        "conditions": [
+            {
+                "field": "method",
+                "operator": "equal",
+                "values": ["GET","PUT","POST","DELETE"]
+            }
+        ],
+        "actions": [
+            {
+                "field": "X-SB-TIMESTAMP",
+                "do": "add"
+            }
+        ]
+    }
+}

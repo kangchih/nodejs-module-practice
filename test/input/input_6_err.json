@@ -1,0 +1,9 @@
+{
+    "url": "http://www.sb.com/sb/me?q=1",
+    "method": "PUT",
+    "headers": {
+      "Cookie": "sbcookie=value; name2=value2; name3=value3",
+      "Content-Type": "text",
+      "Referer": "http://www.sb.com"
+    }
+  }
